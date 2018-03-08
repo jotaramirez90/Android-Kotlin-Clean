@@ -1,8 +1,10 @@
 package com.jota.klean.app.internal.di.components.main
 
 import com.jota.klean.app.internal.di.annotation.PerView
+import com.jota.klean.app.internal.di.components.ViewComponent
 import com.jota.klean.app.internal.di.modules.main.MainModule
 import com.jota.klean.features.main.MainActivity
+import com.jota.klean.features.main.MainView
 import dagger.Subcomponent
 
 /**
@@ -10,7 +12,7 @@ import dagger.Subcomponent
  */
 @PerView
 @Subcomponent(modules = [(MainModule::class)])
-interface MainComponent {
+interface MainComponent : ViewComponent<MainActivity> {
 
-    fun inject(view: MainActivity)
+    override fun inject(view: MainActivity)
 }

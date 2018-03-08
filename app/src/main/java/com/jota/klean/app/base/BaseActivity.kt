@@ -7,23 +7,28 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.Toast
+import com.jota.klean.app.internal.di.components.ViewComponent
+import javax.inject.Inject
 
 /**
  * Created by jotaramirez on 5/3/18.
  */
-@Suppress("UNCHECKED_CAST")
-abstract class BaseActivity<in V : IView, out T : Presenter<V>> : AppCompatActivity() {
+abstract class BaseActivity<in V : IView, T : Presenter<V>, out C : ViewComponent<V>> : AppCompatActivity() {
 
-    private lateinit var mPresenter: T
+    @Inject
+    lateinit var mPresenter: T
+
+    abstract fun bindComponent(): C
 
     abstract fun bindLayout(): Int
-
-    abstract fun bindPresenter(): T
 
     override fun onCreate(savedInstanceState: Bundle?) {
         onBeforeCreated()
         super.onCreate(savedInstanceState)
-        initializeActivity()
+        bindComponent().inject(this as V)
+        mPresenter.attachView(this as V)
+        mPresenter.create()
+        setContentView(layoutInflater.inflate(bindLayout(), null))
         onAfterCreated()
     }
 
@@ -54,13 +59,6 @@ abstract class BaseActivity<in V : IView, out T : Presenter<V>> : AppCompatActiv
 
     open fun onAfterCreated() {
         mPresenter.viewPrepared()
-    }
-
-    open fun initializeActivity() {
-        mPresenter = bindPresenter()
-        mPresenter.attachView(this as V)
-        mPresenter.create()
-        setContentView(layoutInflater.inflate(bindLayout(), null))
     }
 
     protected fun replaceFragment(containerViewId: Int, fragment: Fragment) {
