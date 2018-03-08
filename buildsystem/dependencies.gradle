@@ -1,0 +1,77 @@
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+    }
+}
+
+ext {
+    //Android
+    androidCompileSdkVersion = 26
+    androidBuildToolsVersion = "26.0.2"
+    androidMinSdkVersion = 16
+    androidTargetSdkVersion = 26
+
+    //Libraries
+    supportVersion = '26.1.0'
+    constraintVersion = '1.0.2'
+    playServicesVersion = '11.6.0'
+    multidexVersion = '1.0.1'
+    androidAnnotationsVersion = '23.1.1'
+    gsonVersion = '2.7'
+    daggerVersion = '2.12'
+    rxKotlinVersion = '2.1.0'
+    rxAndroidVersion = '2.0.1'
+    retrofitVersion = '2.3.0'
+    javaxAnnotationsVersion = '1.2'
+    picassoVersion = '2.5.2'
+
+    //Testing
+    jUnitVersion = '4.12'
+    mockitoVersion = '1.9.5'
+    runnerVersion = '1.0.1'
+    espressoVersion = '2.2.2'
+    espressoContribVersion = '2.2'
+
+    appDependencies =
+            [recyclerview    : "com.android.support:recyclerview-v7:${supportVersion}",
+             cardview        : "com.android.support:cardview-v7:${supportVersion}",
+             design          : "com.android.support:design:${supportVersion}",
+             appcompat       : "com.android.support:appcompat-v7:${supportVersion}",
+             preference      : "com.android.support:preference-v7:${supportVersion}",
+             multidex        : "com.android.support:multidex:${multidexVersion}",
+             constraint      : "com.android.support.constraint:constraint-layout:${constraintVersion}",
+             vectorDrawable  : "com.android.support:support-vector-drawable:${supportVersion}",
+             gson            : "com.google.code.gson:gson:${gsonVersion}",
+             dagger          : "com.google.dagger:dagger:${daggerVersion}",
+             daggerCompiler  : "com.google.dagger:dagger-compiler:${daggerVersion}",
+             rxKotlin        : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+             rxAndroid       : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+             javaxAnnotations: "javax.annotation:javax.annotation-api:${javaxAnnotationsVersion}",
+             picasso         : "com.squareup.picasso:picasso:${picassoVersion}"]
+
+    domainDependencies = [dagger          : "com.google.dagger:dagger:${daggerVersion}",
+                          daggerCompiler  : "com.google.dagger:dagger-compiler:${daggerVersion}",
+                          javaxAnnotations: "javax.annotation:javax.annotation-api:${javaxAnnotationsVersion}",
+                          rxKotlin        : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}"]
+
+    dataDependencies = [dagger               : "com.google.dagger:dagger:${daggerVersion}",
+                        daggerCompiler       : "com.google.dagger:dagger-compiler:${daggerVersion}",
+                        rxKotlin             : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+                        rxAndroid            : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+                        retrofit             : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+                        retrofitConverterGson: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+                        retrofitAdapter      : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
+                        javaxAnnotations     : "javax.annotation:javax.annotation-api:${javaxAnnotationsVersion}",
+                        androidAnnotations   : "com.android.support:support-annotations:${androidAnnotationsVersion}"]
+
+    testDependencies = [jUnit                 : "junit:junit:${jUnitVersion}",
+                        mockito               : "org.mockito:mockito-core:${mockitoVersion}",
+                        runner                : "com.android.support.test:runner:${runnerVersion}",
+                        espressoIdlingResource: "com.android.support.test.espresso:espresso-idling-resource:${espressoVersion}",
+                        espressoIntents       : "com.android.support.test.espresso:espresso-intents:${espressoVersion}",
+                        espressoCore          : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+                        espressoContrib       : "com.android.support.test.espresso:espresso-contrib:${espressoContribVersion}"]
+}

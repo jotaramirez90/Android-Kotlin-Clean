@@ -1,0 +1,15 @@
+package com.jota.klean.app.internal.di.modules.main
+
+import com.jota.klean.features.main.MainPresenter
+import dagger.Module
+import dagger.Provides
+
+/**
+ * Created by jotaramirez on 8/3/18.
+ */
+@Module
+class MainModule {
+
+    @Provides
+    fun provideMainPresenter(): MainPresenter = MainPresenter()
+}

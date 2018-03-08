@@ -1,0 +1,37 @@
+apply from: 'buildsystem/dependencies.gradle'
+
+buildscript {
+    ext {
+        androidApplicationId = 'com.jota.klean'
+        androidVersionCode = 1
+        androidVersionName = "0.9.0"
+        kotlin_version = '1.2.30'
+    }
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        google()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        google()
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.fork = true
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
