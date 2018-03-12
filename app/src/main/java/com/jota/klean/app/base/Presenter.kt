@@ -1,23 +1,19 @@
 package com.jota.klean.app.base
 
 /**
- * Created by jotaramirez on 5/3/18.
+ * Created by jotaramirez on 8/3/18.
  */
-open class Presenter<in V : IView> {
+interface Presenter<in T : IView> {
 
-    private lateinit var view: V
+    fun attachView(view: T)
 
-    fun attachView(view: V) {
-        this.view = view
-    }
+    fun create()
 
-    fun create() {}
+    fun resume()
 
-    fun resume() {}
+    fun viewPrepared()
 
-    fun viewPrepared() {}
+    fun pause()
 
-    fun pause() {}
-
-    fun destroy() {}
+    fun destroy()
 }

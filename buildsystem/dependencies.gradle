@@ -57,9 +57,7 @@ ext {
                           javaxAnnotations: "javax.annotation:javax.annotation-api:${javaxAnnotationsVersion}",
                           rxKotlin        : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}"]
 
-    dataDependencies = [dagger               : "com.google.dagger:dagger:${daggerVersion}",
-                        daggerCompiler       : "com.google.dagger:dagger-compiler:${daggerVersion}",
-                        rxKotlin             : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+    dataDependencies = [rxKotlin             : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
                         rxAndroid            : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
                         retrofit             : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
                         retrofitConverterGson: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",

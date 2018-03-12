@@ -1,10 +1,51 @@
 package com.jota.klean.features.main
 
-import com.jota.klean.app.base.Presenter
+import com.jota.klean.app.base.BasePresenter
+import com.jota.klean.domain.interactor.coroutines.GetWeatherCoroutines
+import com.jota.klean.domain.interactor.rx.BaseObserver
+import com.jota.klean.domain.interactor.rx.GetWeatherRx
+import com.jota.klean.domain.model.CityWeather
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.async
+import org.jetbrains.anko.coroutines.experimental.bg
 
 /**
  * Created by jotaramirez on 7/3/18.
  */
-class MainPresenter : Presenter<MainView>() {
+class MainPresenter(private val getWeatherCoroutines: GetWeatherCoroutines,
+                    private val getWeatherRx: GetWeatherRx
+) : BasePresenter<MainView>() {
 
+    override fun create() {
+        super.create()
+        mJobs.add(getDataCoroutines())
+        getDataRx()
+    }
+
+    private fun getDataCoroutines() = async(UI) {
+        val result = bg {
+            getWeatherCoroutines.execute(
+                    GetWeatherCoroutines.Params.forCity("-4.3055249", "39.8073556"))
+        }
+        view?.setCoroutines(result.await()?.base ?: "Coroutines: Error")
+    }
+
+    private fun getDataRx() {
+        getWeatherRx.execute(
+                GetWeatherRxObserver(),
+                GetWeatherRx.Params.forCity("-4.3055249", "39.8073556")
+        )
+    }
+
+    inner class GetWeatherRxObserver : BaseObserver<CityWeather>() {
+        override fun onNext(t: CityWeather) {
+            super.onNext(t)
+            view?.setRx("Rx: " + t.name!!)
+        }
+
+        override fun onError(e: Throwable) {
+            super.onError(e)
+            view?.setRx("Rx: Error")
+        }
+    }
 }

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     publishNonDefault true
@@ -18,14 +19,18 @@ android {
     }
 
     buildTypes {
+        debug {
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'API', '"http://api.openweathermap.org/data/2.5/"'
+            buildConfigField 'String', 'APPID', '"a796d930e567d07b6c232f26c75c3f4e"'
+        }
         release {
             debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            debuggable true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'API', '"http://api.openweathermap.org/data/2.5/weather"'
+            buildConfigField 'String', 'APPID', '"a796d930e567d07b6c232f26c75c3f4e"'
         }
     }
 
@@ -36,6 +41,10 @@ android {
         disable 'InvalidPackage'
         disable 'OldTargetApi'
     }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
 dependencies {
@@ -43,9 +52,13 @@ dependencies {
 
     implementation project(':domain')
 
+    kapt domainDependencies.daggerCompiler
+    compile domainDependencies.dagger
+
     compile dataDependencies.retrofit
     compile dataDependencies.retrofitConverterGson
     compile dataDependencies.retrofitAdapter
+    compile 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:1.0.0'
 
     provided dataDependencies.javaxAnnotations
     compile dataDependencies.androidAnnotations

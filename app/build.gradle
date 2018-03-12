@@ -64,6 +64,9 @@ dependencies {
     compile appDependencies.vectorDrawable
     compile appDependencies.multidex
 
+    compile dataDependencies.rxKotlin
+    compile dataDependencies.rxAndroid
+
     compile appDependencies.dagger
     kapt appDependencies.daggerCompiler
     kaptTest appDependencies.daggerCompiler

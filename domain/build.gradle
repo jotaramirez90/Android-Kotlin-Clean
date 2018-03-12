@@ -14,6 +14,12 @@ dependencies {
     def domainDependencies = rootProject.ext.domainDependencies
 
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compile "org.jetbrains.anko:anko-coroutines:$anko_version"
+
+    compile domainDependencies.rxKotlin
+
+    compile domainDependencies.dagger
+    provided domainDependencies.daggerCompiler
 
     provided domainDependencies.javaxAnnotations
 }
