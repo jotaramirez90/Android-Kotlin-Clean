@@ -16,5 +16,5 @@ interface ApiCoroutines {
             @Query("lon") longitude: String,
             @Query("units") units: String,
             @Query("APPID") appId: String
-    ): Deferred<CityWeatherEntity>
+    ): Deferred<CityWeatherEntity?>
 }

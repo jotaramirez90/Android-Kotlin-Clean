@@ -2,11 +2,13 @@ package com.jota.klean.data.repository
 
 import com.jota.klean.data.entity.mapper.CityWeatherEntityDataMapper
 import com.jota.klean.data.repository.source.DataStoreFactory
+import com.jota.klean.domain.interactor.coroutines.ResultCoroutines
 import com.jota.klean.domain.model.CityWeather
 import com.jota.klean.domain.repository.Repository
 import io.reactivex.Observable
-import kotlinx.coroutines.experimental.Deferred
+import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.experimental.runBlocking
 import javax.inject.Inject
 
 /**
@@ -17,11 +19,16 @@ class DataRepository @Inject constructor(
         private val mCityWeatherEntityDataMapper: CityWeatherEntityDataMapper
 ) : Repository {
 
-    override fun getCityWeatherCoroutines(latitude: String, longitude: String): Deferred<CityWeather> {
-        return async {
+    override fun getCityWeatherCoroutines(latitude: String, longitude: String): ResultCoroutines<CityWeather> {
+        return runBlocking {
             val cloudDataCoroutines = mDataStoreFactory.createCloudDataCoroutines()
-            val result = cloudDataCoroutines.getCityWeather(latitude, longitude)
-            mCityWeatherEntityDataMapper.transform(result.await())
+            val task = async(CommonPool) { cloudDataCoroutines.getCityWeather(latitude, longitude) }
+            if (!task.await().isCompletedExceptionally) {
+                ResultCoroutines.Success(mCityWeatherEntityDataMapper
+                        .transform(task.getCompleted().getCompleted()!!))
+            } else {
+                ResultCoroutines.Error(Throwable())
+            }
         }
     }
 

@@ -8,5 +8,5 @@ import kotlinx.coroutines.experimental.Deferred
  */
 interface CloudDataCoroutines {
 
-    fun getCityWeather(latitude: String, longitude: String): Deferred<CityWeatherEntity>
+    fun getCityWeather(latitude: String, longitude: String): Deferred<CityWeatherEntity?>
 }

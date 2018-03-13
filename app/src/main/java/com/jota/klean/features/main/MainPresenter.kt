@@ -2,6 +2,7 @@ package com.jota.klean.features.main
 
 import com.jota.klean.app.base.BasePresenter
 import com.jota.klean.domain.interactor.coroutines.GetWeatherCoroutines
+import com.jota.klean.domain.interactor.coroutines.ResultCoroutines
 import com.jota.klean.domain.interactor.rx.BaseObserver
 import com.jota.klean.domain.interactor.rx.GetWeatherRx
 import com.jota.klean.domain.model.CityWeather
@@ -27,7 +28,14 @@ class MainPresenter(private val getWeatherCoroutines: GetWeatherCoroutines,
             getWeatherCoroutines.execute(
                     GetWeatherCoroutines.Params.forCity("-4.3055249", "39.8073556"))
         }
-        view?.setCoroutines(result.await()?.base ?: "Coroutines: Error")
+        setDataCoroutines(result.await())
+    }
+
+    private fun setDataCoroutines(resultCoroutines: ResultCoroutines<CityWeather>) {
+        view?.setCoroutines(when (resultCoroutines) {
+            is ResultCoroutines.Success -> "Coroutines: " + resultCoroutines.data.name!!
+            is ResultCoroutines.Error -> "Coroutines: Error"
+        })
     }
 
     private fun getDataRx() {
