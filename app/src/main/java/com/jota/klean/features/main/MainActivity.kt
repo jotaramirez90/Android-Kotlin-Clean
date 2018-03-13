@@ -26,6 +26,7 @@ class MainActivity : BaseActivity<MainActivity, MainPresenter, MainComponent>(),
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
+                app.mNavigator.navigateToDetails()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {

@@ -9,15 +9,18 @@ import javax.inject.Singleton
  * Created by jotaramirez on 12/3/18.
  */
 @Singleton
-class CityWeatherEntityDataMapper @Inject constructor() {
+class CityWeatherEntityDataMapper @Inject constructor(
+        private val weatherEntityDataMapper: WeatherEntityDataMapper
+) {
 
-    fun transform(entity: CityWeatherEntity): CityWeather {
-        return CityWeather(
-                entity.base,
-                entity.visibility,
-                entity.dt,
-                entity.id,
-                entity.name,
-                entity.cod)
-    }
+    fun transform(entity: CityWeatherEntity): CityWeather =
+            CityWeather(
+                    weatherEntityDataMapper.transform(entity.weather),
+                    entity.base,
+                    entity.visibility,
+                    entity.dt,
+                    entity.id,
+                    entity.name,
+                    entity.cod
+            )
 }

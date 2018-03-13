@@ -5,18 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.jota.klean.app.internal.di.components.ViewComponent
+import javax.inject.Inject
 
 /**
  * Created by jotaramirez on 8/3/18.
  */
 @Suppress("UNCHECKED_CAST")
-abstract class BaseFragment<in V : IView, out T : Presenter<V>, out C : ViewComponent<V>> : Fragment() {
+abstract class BaseFragment<in V : IView, T : Presenter<V>, out C : ViewComponent<V>> : Fragment() {
 
-    private lateinit var mPresenter: T
+    @Inject
+    lateinit var mPresenter: T
 
     abstract fun bindViewComponent(): C
-
-    abstract fun bindPresenter(): T
 
     abstract fun bindLayout(): Int
 
@@ -55,7 +55,6 @@ abstract class BaseFragment<in V : IView, out T : Presenter<V>, out C : ViewComp
 
     open fun initializeFragment() {
         bindViewComponent().inject(this as V)
-        mPresenter = bindPresenter()
         mPresenter.create()
     }
 }
