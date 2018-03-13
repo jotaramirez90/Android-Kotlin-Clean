@@ -19,23 +19,22 @@ class MainPresenter(private val getWeatherCoroutines: GetWeatherCoroutines,
 
     override fun create() {
         super.create()
-        mJobs.add(getDataCoroutines())
+        getDataCoroutines()
         getDataRx()
     }
 
-    private fun getDataCoroutines() = async(UI) {
-        val result = bg {
-            getWeatherCoroutines.execute(
-                    GetWeatherCoroutines.Params.forCity("-4.3055249", "39.8073556"))
+    private fun getDataCoroutines() {
+        async(UI) {
+            val result = bg {
+                getWeatherCoroutines.execute(
+                        GetWeatherCoroutines.Params.forCity("-4.3055249", "39.8073556"))
+            }
+            val data = result.await()
+            view?.setCoroutines(when (data) {
+                is ResultCoroutines.Success -> "Coroutines: " + data.data.name!!
+                is ResultCoroutines.Error -> "Coroutines: Error"
+            })
         }
-        setDataCoroutines(result.await())
-    }
-
-    private fun setDataCoroutines(resultCoroutines: ResultCoroutines<CityWeather>) {
-        view?.setCoroutines(when (resultCoroutines) {
-            is ResultCoroutines.Success -> "Coroutines: " + resultCoroutines.data.name!!
-            is ResultCoroutines.Error -> "Coroutines: Error"
-        })
     }
 
     private fun getDataRx() {

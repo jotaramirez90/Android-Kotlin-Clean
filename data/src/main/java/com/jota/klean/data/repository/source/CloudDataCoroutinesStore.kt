@@ -10,6 +10,6 @@ import kotlinx.coroutines.experimental.Deferred
  */
 class CloudDataCoroutinesStore(private val mRestApiCoroutines: ApiCoroutines) : CloudDataCoroutines {
 
-    override fun getCityWeather(latitude: String, longitude: String): Deferred<CityWeatherEntity?> =
+    override suspend fun getCityWeather(latitude: String, longitude: String): Deferred<CityWeatherEntity?> =
             mRestApiCoroutines.getCityWeather(latitude, longitude, "metric", BuildConfig.APPID)
 }
