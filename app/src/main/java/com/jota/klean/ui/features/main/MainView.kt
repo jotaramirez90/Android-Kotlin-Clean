@@ -1,6 +1,6 @@
-package com.jota.klean.features.main
+package com.jota.klean.ui.features.main
 
-import com.jota.klean.app.base.IView
+import com.jota.klean.ui.common.IView
 
 /**
  * Created by jotaramirez on 5/3/18.

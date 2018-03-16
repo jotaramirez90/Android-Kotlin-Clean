@@ -2,7 +2,7 @@ package com.jota.klean.app.navigator
 
 import android.app.Activity
 import android.content.Intent
-import com.jota.klean.features.details.DetailsActivity
+import com.jota.klean.ui.features.details.DetailsActivity
 import javax.inject.Inject
 
 /**

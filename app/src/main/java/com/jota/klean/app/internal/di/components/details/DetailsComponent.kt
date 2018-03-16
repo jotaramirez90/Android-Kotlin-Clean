@@ -3,7 +3,7 @@ package com.jota.klean.app.internal.di.components.details
 import com.jota.klean.app.internal.di.annotation.PerView
 import com.jota.klean.app.internal.di.components.ViewComponent
 import com.jota.klean.app.internal.di.modules.details.DetailsModule
-import com.jota.klean.features.details.DetailsActivity
+import com.jota.klean.ui.features.details.DetailsActivity
 import dagger.Subcomponent
 
 /**

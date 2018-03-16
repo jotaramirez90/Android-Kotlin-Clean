@@ -1,6 +1,6 @@
 package com.jota.klean.app.internal.di.components
 
-import com.jota.klean.app.base.IView
+import com.jota.klean.ui.common.IView
 
 /**
  * Created by jotaramirez on 8/3/18.

@@ -1,6 +1,6 @@
 package com.jota.klean.app.internal.di.modules.details
 
-import com.jota.klean.features.details.DetailsPresenter
+import com.jota.klean.ui.features.details.DetailsPresenter
 import dagger.Module
 import dagger.Provides
 

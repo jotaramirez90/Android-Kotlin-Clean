@@ -1,4 +1,4 @@
-package com.jota.klean.app.base
+package com.jota.klean.ui.common
 
 import android.app.ActionBar
 import android.app.Fragment
@@ -7,29 +7,34 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.Toast
+import com.jota.klean.app.extensions.app
 import com.jota.klean.app.internal.di.components.ViewComponent
 import javax.inject.Inject
 
 /**
  * Created by jotaramirez on 5/3/18.
  */
-abstract class BaseActivity<in V : IView, T : Presenter<V>, out C : ViewComponent<V>> : AppCompatActivity() {
+@Suppress("UNCHECKED_CAST")
+abstract class BaseActivity<in V : IView, T : IPresenter<V>, out C : ViewComponent<V>> : AppCompatActivity() {
 
     @Inject
     lateinit var mPresenter: T
+
+    val mAppComponent by lazy(mode = LazyThreadSafetyMode.NONE) { app.mAppComponent }
+
+    val mNavigator by lazy(mode = LazyThreadSafetyMode.NONE) { app.mNavigator }
 
     abstract fun bindComponent(): C
 
     abstract fun bindLayout(): Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        onBeforeCreated()
         super.onCreate(savedInstanceState)
         bindComponent().inject(this as V)
         mPresenter.attachView(this as V)
         mPresenter.create()
         setContentView(layoutInflater.inflate(bindLayout(), null))
-        onAfterCreated()
+        mPresenter.viewPrepared()
     }
 
     override fun onResume() {
@@ -53,12 +58,6 @@ abstract class BaseActivity<in V : IView, T : Presenter<V>, out C : ViewComponen
             return true
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    open fun onBeforeCreated() {}
-
-    open fun onAfterCreated() {
-        mPresenter.viewPrepared()
     }
 
     protected fun replaceFragment(containerViewId: Int, fragment: Fragment) {

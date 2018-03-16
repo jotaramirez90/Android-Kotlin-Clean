@@ -1,11 +1,11 @@
-package com.jota.klean.app.base
+package com.jota.klean.ui.common
 
 import kotlinx.coroutines.experimental.Job
 
 /**
  * Created by jotaramirez on 5/3/18.
  */
-open class BasePresenter<V : IView> : Presenter<V> {
+open class BasePresenter<V : IView> : IPresenter<V> {
 
     protected var view: V? = null
     protected var mJobs: MutableList<Job?> = mutableListOf()
@@ -17,10 +17,10 @@ open class BasePresenter<V : IView> : Presenter<V> {
     override fun create() {
     }
 
-    override fun resume() {
+    override fun viewPrepared() {
     }
 
-    override fun viewPrepared() {
+    override fun resume() {
     }
 
     override fun pause() {

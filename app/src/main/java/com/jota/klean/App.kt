@@ -1,4 +1,4 @@
-package com.jota.klean.app
+package com.jota.klean
 
 import android.app.Activity
 import android.app.Application
@@ -16,7 +16,7 @@ class App : Application(), Application.ActivityLifecycleCallbacks {
 
     @Inject lateinit var mNavigator: Navigator
 
-    val component: ApplicationComponent by lazy {
+    val mAppComponent: ApplicationComponent by lazy {
         DaggerApplicationComponent.builder()
                 .applicationModule(ApplicationModule(this))
                 .build()
@@ -24,7 +24,7 @@ class App : Application(), Application.ActivityLifecycleCallbacks {
 
     override fun onCreate() {
         super.onCreate()
-        component.inject(this)
+        mAppComponent.inject(this)
         registerActivityLifecycleCallbacks(this)
     }
 

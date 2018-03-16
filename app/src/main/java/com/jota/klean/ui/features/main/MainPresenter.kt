@@ -1,6 +1,6 @@
-package com.jota.klean.features.main
+package com.jota.klean.ui.features.main
 
-import com.jota.klean.app.base.BasePresenter
+import com.jota.klean.ui.common.BasePresenter
 import com.jota.klean.domain.interactor.coroutines.GetWeatherCoroutines
 import com.jota.klean.domain.interactor.coroutines.ResultCoroutines
 import com.jota.klean.domain.interactor.rx.BaseObserver

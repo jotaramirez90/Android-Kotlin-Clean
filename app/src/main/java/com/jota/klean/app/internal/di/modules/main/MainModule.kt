@@ -6,7 +6,7 @@ import com.jota.klean.domain.executor.ThreadExecutor
 import com.jota.klean.domain.interactor.coroutines.GetWeatherCoroutines
 import com.jota.klean.domain.interactor.rx.GetWeatherRx
 import com.jota.klean.domain.repository.Repository
-import com.jota.klean.features.main.MainPresenter
+import com.jota.klean.ui.features.main.MainPresenter
 import dagger.Module
 import dagger.Provides
 

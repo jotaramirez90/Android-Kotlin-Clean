@@ -1,7 +1,7 @@
 package com.jota.klean.app.internal.di.modules
 
 import android.content.Context
-import com.jota.klean.app.App
+import com.jota.klean.App
 import com.jota.klean.app.executor.UIThread
 import com.jota.klean.app.navigator.INavigator
 import com.jota.klean.app.navigator.Navigator

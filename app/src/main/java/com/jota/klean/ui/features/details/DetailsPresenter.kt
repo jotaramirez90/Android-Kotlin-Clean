@@ -1,6 +1,6 @@
-package com.jota.klean.features.details
+package com.jota.klean.ui.features.details
 
-import com.jota.klean.app.base.BasePresenter
+import com.jota.klean.ui.common.BasePresenter
 
 /**
  * Created by Jota Ramirez on 13/3/18.
