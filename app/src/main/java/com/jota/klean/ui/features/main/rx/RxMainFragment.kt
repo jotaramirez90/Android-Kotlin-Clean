@@ -4,11 +4,13 @@ import com.jota.klean.R
 import com.jota.klean.app.internal.di.components.main.rx.RxMainComponent
 import com.jota.klean.app.internal.di.modules.main.rx.RxMainModule
 import com.jota.klean.ui.common.BaseFragment
+import kotlinx.android.synthetic.main.fragment_coroutines_main.*
 
 /**
  * Created by Jota Ramirez on 16/3/18.
  */
-class RxMainFragment : BaseFragment<RxMainFragment, RxMainPresenter, RxMainComponent>(), RxMainView {
+class RxMainFragment
+    : BaseFragment<RxMainFragment, RxMainPresenter, RxMainComponent>(), RxMainView {
 
     companion object {
 
@@ -17,5 +19,9 @@ class RxMainFragment : BaseFragment<RxMainFragment, RxMainPresenter, RxMainCompo
 
     override fun bindComponent(): RxMainComponent = appComponent.plus(RxMainModule())
 
-    override fun bindLayout(): Int = R.layout.fragment_main
+    override fun bindLayout(): Int = R.layout.fragment_rx_main
+
+    override fun setData(data: String) {
+        tv_text.text = data
+    }
 }

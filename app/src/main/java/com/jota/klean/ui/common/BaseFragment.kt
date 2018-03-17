@@ -27,6 +27,7 @@ abstract class BaseFragment<in V : IView, T : IPresenter<V>, out C : ViewCompone
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindComponent().inject(this as V)
+        mPresenter.create()
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,

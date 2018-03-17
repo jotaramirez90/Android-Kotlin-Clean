@@ -5,4 +5,7 @@ import com.jota.klean.ui.common.IView
 /**
  * Created by Jota Ramirez on 16/3/18.
  */
-interface RxMainView : IView
+interface RxMainView : IView {
+
+    fun setData(data: String)
+}

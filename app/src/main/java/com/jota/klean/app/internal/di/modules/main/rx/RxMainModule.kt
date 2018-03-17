@@ -1,5 +1,10 @@
 package com.jota.klean.app.internal.di.modules.main.rx
 
+import com.jota.klean.app.internal.di.scope.PerView
+import com.jota.klean.domain.executor.PostExecutionThread
+import com.jota.klean.domain.executor.ThreadExecutor
+import com.jota.klean.domain.interactor.rx.GetWeatherRx
+import com.jota.klean.domain.repository.Repository
 import com.jota.klean.ui.features.main.rx.RxMainPresenter
 import dagger.Module
 import dagger.Provides
@@ -11,5 +16,12 @@ import dagger.Provides
 class RxMainModule {
 
     @Provides
-    fun provideMainFragmentPresenter() = RxMainPresenter()
+    @PerView
+    fun provideGetWeatherRx(repository: Repository,
+                            threadExecutor: ThreadExecutor,
+                            postExecutionThread: PostExecutionThread) =
+            GetWeatherRx(repository, threadExecutor, postExecutionThread)
+
+    @Provides
+    fun provideRxMainPresenter(getWeatherRx: GetWeatherRx) = RxMainPresenter(getWeatherRx)
 }
