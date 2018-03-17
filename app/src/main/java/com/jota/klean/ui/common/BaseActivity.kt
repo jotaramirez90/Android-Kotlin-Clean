@@ -1,6 +1,5 @@
 package com.jota.klean.ui.common
 
-import android.app.ActionBar
 import android.app.Fragment
 import android.app.FragmentTransaction
 import android.os.Bundle
@@ -71,9 +70,8 @@ abstract class BaseActivity<in V : IView, T : IPresenter<V>, out C : ViewCompone
     }
 
     protected fun enableHomeAsUp() {
-        val actionBar: ActionBar? = actionBar
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)
     }
 
     protected fun showToast(message: String) {

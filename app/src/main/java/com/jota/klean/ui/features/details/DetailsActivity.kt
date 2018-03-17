@@ -6,6 +6,7 @@ import com.jota.klean.app.internal.di.components.details.DetailsComponent
 import com.jota.klean.app.internal.di.modules.details.DetailsModule
 import com.jota.klean.ui.common.BaseActivity
 import kotlinx.android.synthetic.main.activity_details.*
+import kotlinx.android.synthetic.main.component_toolbar.*
 
 /**
  * Created by Jota Ramirez on 13/3/18.
@@ -25,6 +26,13 @@ class DetailsActivity : BaseActivity<DetailsActivity, DetailsPresenter, DetailsC
     override fun bindComponent(): DetailsComponent = mAppComponent.plus(DetailsModule())
 
     override fun bindLayout(): Int = R.layout.activity_details
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = getString(R.string.details_title)
+        enableHomeAsUp()
+    }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)

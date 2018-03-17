@@ -4,4 +4,10 @@
     <!--Bottom bar-->
     <string name="bottom_title_rx" translatable="false">Rx</string>
     <string name="bottom_title_coroutines" translatable="false">Coroutines</string>
+
+    <!--Main-->
+    <string name="main_title">Comparative</string>
+
+    <!--Details-->
+    <string name="details_title">Details</string>
 </resources>
