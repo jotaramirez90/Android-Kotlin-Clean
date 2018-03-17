@@ -1,4 +1,4 @@
-package com.jota.klean.app.internal.di.modules
+package com.jota.klean.app.di.modules
 
 import com.jota.klean.data.repository.DataRepository
 import com.jota.klean.domain.repository.Repository

@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jota.klean.app.extensions.app
-import com.jota.klean.app.internal.di.components.ViewComponent
+import com.jota.klean.app.di.components.ViewComponent
 import javax.inject.Inject
 
 /**

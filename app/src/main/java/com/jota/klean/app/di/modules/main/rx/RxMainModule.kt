@@ -1,10 +1,11 @@
-package com.jota.klean.app.internal.di.modules.main.rx
+package com.jota.klean.app.di.modules.main.rx
 
-import com.jota.klean.app.internal.di.scope.PerView
+import com.jota.klean.app.di.scope.PerView
 import com.jota.klean.domain.executor.PostExecutionThread
 import com.jota.klean.domain.executor.ThreadExecutor
 import com.jota.klean.domain.interactor.rx.GetWeatherRx
 import com.jota.klean.domain.repository.Repository
+import com.jota.klean.model.mapper.CityWeatherViewModelMapper
 import com.jota.klean.ui.features.main.rx.RxMainPresenter
 import dagger.Module
 import dagger.Provides
@@ -23,5 +24,8 @@ class RxMainModule {
             GetWeatherRx(repository, threadExecutor, postExecutionThread)
 
     @Provides
-    fun provideRxMainPresenter(getWeatherRx: GetWeatherRx) = RxMainPresenter(getWeatherRx)
+    fun provideRxMainPresenter(
+            getWeatherRx: GetWeatherRx,
+            cityWeatherViewModelMapper: CityWeatherViewModelMapper
+    ) = RxMainPresenter(getWeatherRx, cityWeatherViewModelMapper)
 }

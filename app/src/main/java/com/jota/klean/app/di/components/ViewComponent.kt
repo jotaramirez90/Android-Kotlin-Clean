@@ -1,4 +1,4 @@
-package com.jota.klean.app.internal.di.components
+package com.jota.klean.app.di.components
 
 import com.jota.klean.ui.common.IView
 

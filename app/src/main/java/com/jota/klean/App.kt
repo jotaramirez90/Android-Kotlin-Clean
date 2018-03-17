@@ -1,9 +1,9 @@
 package com.jota.klean
 
 import android.app.Application
-import com.jota.klean.app.internal.di.components.ApplicationComponent
-import com.jota.klean.app.internal.di.components.DaggerApplicationComponent
-import com.jota.klean.app.internal.di.modules.ApplicationModule
+import com.jota.klean.app.di.components.ApplicationComponent
+import com.jota.klean.app.di.components.DaggerApplicationComponent
+import com.jota.klean.app.di.modules.ApplicationModule
 
 /**
  * Created by jotaramirez on 8/3/18.

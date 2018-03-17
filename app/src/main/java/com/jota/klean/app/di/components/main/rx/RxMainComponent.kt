@@ -1,8 +1,8 @@
-package com.jota.klean.app.internal.di.components.main.rx
+package com.jota.klean.app.di.components.main.rx
 
-import com.jota.klean.app.internal.di.scope.PerView
-import com.jota.klean.app.internal.di.components.ViewComponent
-import com.jota.klean.app.internal.di.modules.main.rx.RxMainModule
+import com.jota.klean.app.di.scope.PerView
+import com.jota.klean.app.di.components.ViewComponent
+import com.jota.klean.app.di.modules.main.rx.RxMainModule
 import com.jota.klean.ui.features.main.rx.RxMainFragment
 import dagger.Subcomponent
 

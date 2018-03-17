@@ -2,8 +2,8 @@ package com.jota.klean.ui.features.main
 
 import android.os.Bundle
 import com.jota.klean.R
-import com.jota.klean.app.internal.di.components.main.MainComponent
-import com.jota.klean.app.internal.di.modules.main.MainModule
+import com.jota.klean.app.di.components.main.MainComponent
+import com.jota.klean.app.di.modules.main.MainModule
 import com.jota.klean.ui.common.BaseActivity
 import com.jota.klean.ui.features.main.coroutines.CoroutinesMainFragment
 import com.jota.klean.ui.features.main.rx.RxMainFragment

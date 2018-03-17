@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.Toast
 import com.jota.klean.app.extensions.app
-import com.jota.klean.app.internal.di.components.ViewComponent
+import com.jota.klean.app.di.components.ViewComponent
 import javax.inject.Inject
 
 /**

@@ -2,8 +2,8 @@ package com.jota.klean.ui.features.details
 
 import android.os.Bundle
 import com.jota.klean.R
-import com.jota.klean.app.internal.di.components.details.DetailsComponent
-import com.jota.klean.app.internal.di.modules.details.DetailsModule
+import com.jota.klean.app.di.components.details.DetailsComponent
+import com.jota.klean.app.di.modules.details.DetailsModule
 import com.jota.klean.ui.common.BaseActivity
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.component_toolbar.*

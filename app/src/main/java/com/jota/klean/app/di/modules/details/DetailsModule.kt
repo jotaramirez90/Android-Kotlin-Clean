@@ -1,4 +1,4 @@
-package com.jota.klean.app.internal.di.modules.details
+package com.jota.klean.app.di.modules.details
 
 import com.jota.klean.ui.features.details.DetailsPresenter
 import dagger.Module

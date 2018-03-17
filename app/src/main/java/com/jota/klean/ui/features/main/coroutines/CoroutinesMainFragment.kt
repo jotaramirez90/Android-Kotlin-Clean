@@ -1,8 +1,9 @@
 package com.jota.klean.ui.features.main.coroutines
 
 import com.jota.klean.R
-import com.jota.klean.app.internal.di.components.main.coroutines.CoroutinesMainComponent
-import com.jota.klean.app.internal.di.modules.main.coroutines.CoroutinesMainModule
+import com.jota.klean.app.di.components.main.coroutines.CoroutinesMainComponent
+import com.jota.klean.app.di.modules.main.coroutines.CoroutinesMainModule
+import com.jota.klean.model.CityWeatherViewModel
 import com.jota.klean.ui.common.BaseFragment
 import kotlinx.android.synthetic.main.fragment_coroutines_main.*
 
@@ -22,7 +23,11 @@ class CoroutinesMainFragment
 
     override fun bindLayout(): Int = R.layout.fragment_coroutines_main
 
-    override fun setData(data: String) {
-        tv_text.text = data
+    override fun setData(data: CityWeatherViewModel) {
+        tv_text.text = data.name
+    }
+
+    override fun setError(error: String) {
+        tv_text.text = error
     }
 }

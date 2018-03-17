@@ -1,5 +1,6 @@
 package com.jota.klean.ui.features.main.rx
 
+import com.jota.klean.model.CityWeatherViewModel
 import com.jota.klean.ui.common.IView
 
 /**
@@ -7,5 +8,7 @@ import com.jota.klean.ui.common.IView
  */
 interface RxMainView : IView {
 
-    fun setData(data: String)
+    fun setData(data: CityWeatherViewModel)
+
+    fun setError(error: String)
 }
