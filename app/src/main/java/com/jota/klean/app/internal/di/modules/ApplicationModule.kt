@@ -3,8 +3,6 @@ package com.jota.klean.app.internal.di.modules
 import android.content.Context
 import com.jota.klean.App
 import com.jota.klean.app.executor.UIThread
-import com.jota.klean.app.navigator.INavigator
-import com.jota.klean.app.navigator.Navigator
 import com.jota.klean.data.executor.JobExecutor
 import com.jota.klean.domain.executor.PostExecutionThread
 import com.jota.klean.domain.executor.ThreadExecutor
@@ -21,10 +19,6 @@ class ApplicationModule(val app: App) {
     @Provides
     @Singleton
     fun provideApplicationContext(): Context = app
-
-    @Provides
-    @Singleton
-    fun provideNavigator(): INavigator = Navigator()
 
     @Provides
     @Singleton

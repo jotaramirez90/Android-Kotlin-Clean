@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Klean</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="action_settings">Settings</string>
+
+    <!--Bottom bar-->
+    <string name="bottom_title_rx" translatable="false">Rx</string>
+    <string name="bottom_title_coroutines" translatable="false">Coroutines</string>
 </resources>

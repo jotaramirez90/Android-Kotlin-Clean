@@ -1,6 +1,6 @@
 package com.jota.klean.app.internal.di.components.main
 
-import com.jota.klean.app.internal.di.annotation.PerView
+import com.jota.klean.app.internal.di.scope.PerView
 import com.jota.klean.app.internal.di.components.ViewComponent
 import com.jota.klean.app.internal.di.modules.main.MainModule
 import com.jota.klean.ui.features.main.MainActivity

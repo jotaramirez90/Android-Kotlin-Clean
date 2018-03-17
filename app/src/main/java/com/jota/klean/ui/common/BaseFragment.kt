@@ -18,7 +18,7 @@ abstract class BaseFragment<in V : IView, T : IPresenter<V>, out C : ViewCompone
     @Inject
     lateinit var mPresenter: T
 
-    val appComponent by lazy(mode = LazyThreadSafetyMode.NONE) { activity.app.mAppComponent }
+    protected val appComponent by lazy(mode = LazyThreadSafetyMode.NONE) { activity.app.mAppComponent }
 
     abstract fun bindComponent(): C
 

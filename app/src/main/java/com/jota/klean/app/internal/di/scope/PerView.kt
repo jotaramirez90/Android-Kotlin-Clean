@@ -1,4 +1,4 @@
-package com.jota.klean.app.internal.di.annotation
+package com.jota.klean.app.internal.di.scope
 
 import javax.inject.Scope
 

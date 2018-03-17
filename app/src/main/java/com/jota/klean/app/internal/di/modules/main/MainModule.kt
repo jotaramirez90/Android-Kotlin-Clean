@@ -1,6 +1,6 @@
 package com.jota.klean.app.internal.di.modules.main
 
-import com.jota.klean.app.internal.di.annotation.PerView
+import com.jota.klean.app.internal.di.scope.PerView
 import com.jota.klean.domain.executor.PostExecutionThread
 import com.jota.klean.domain.executor.ThreadExecutor
 import com.jota.klean.domain.interactor.coroutines.GetWeatherCoroutines

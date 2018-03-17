@@ -1,8 +1,8 @@
-package com.jota.klean.ui.features.main.fragment
+package com.jota.klean.ui.features.main.rx
 
 import com.jota.klean.ui.common.IView
 
 /**
  * Created by Jota Ramirez on 16/3/18.
  */
-interface MainFragmentView : IView
+interface RxMainView : IView

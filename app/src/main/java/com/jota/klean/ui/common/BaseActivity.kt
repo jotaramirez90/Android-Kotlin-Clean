@@ -20,9 +20,7 @@ abstract class BaseActivity<in V : IView, T : IPresenter<V>, out C : ViewCompone
     @Inject
     lateinit var mPresenter: T
 
-    val mAppComponent by lazy(mode = LazyThreadSafetyMode.NONE) { app.mAppComponent }
-
-    val mNavigator by lazy(mode = LazyThreadSafetyMode.NONE) { app.mNavigator }
+    internal val mAppComponent by lazy(mode = LazyThreadSafetyMode.NONE) { app.mAppComponent }
 
     abstract fun bindComponent(): C
 
