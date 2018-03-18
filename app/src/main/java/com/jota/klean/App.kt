@@ -8,7 +8,7 @@ import com.jota.klean.app.di.modules.ApplicationModule
 /**
  * Created by jotaramirez on 8/3/18.
  */
-class App : Application() {
+open class App : Application() {
 
     val mAppComponent: ApplicationComponent by lazy {
         DaggerApplicationComponent.builder()

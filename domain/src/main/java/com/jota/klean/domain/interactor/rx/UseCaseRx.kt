@@ -20,16 +20,18 @@ abstract class UseCaseRx<T, in Params>(
 
     abstract fun buildUseCaseObservable(params: Params): Observable<T>
 
-    fun execute(observer: DisposableObserver<T>, params: Params) {
+    fun execute(observer: DisposableObserver<T>?, params: Params) {
         Preconditions.checkNotNull(observer)
         val observable: Observable<T> = this.buildUseCaseObservable(params)
                 .subscribeOn(Schedulers.from(threadExecutor))
                 .observeOn(postExecutionThread.getScheduler())
-        addDisposable(observable.subscribeWith(observer))
+        observer?.let {
+            addDisposable(observable.subscribeWith(observer))
+        }
     }
 
     fun dispose() {
-        if (disposables.isDisposed)
+        if (!disposables.isDisposed)
             disposables.dispose()
     }
 

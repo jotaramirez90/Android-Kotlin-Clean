@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.Toast
-import com.jota.klean.app.extensions.app
 import com.jota.klean.app.di.components.ViewComponent
+import com.jota.klean.app.extensions.app
 import javax.inject.Inject
 
 /**
@@ -57,15 +57,15 @@ abstract class BaseActivity<in V : IView, T : IPresenter<V>, out C : ViewCompone
         return super.onOptionsItemSelected(item)
     }
 
-    protected fun replaceFragment(containerViewId: Int, fragment: Fragment) {
+    protected fun replaceFragment(containerViewId: Int, fragment: Fragment, tag: String) {
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(containerViewId, fragment)
+        fragmentTransaction.replace(containerViewId, fragment, tag)
         fragmentTransaction.commit()
     }
 
-    protected fun addFragment(containerViewId: Int, fragment: Fragment) {
+    protected fun addFragment(containerViewId: Int, fragment: Fragment, tag: String) {
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.add(containerViewId, fragment)
+        fragmentTransaction.add(containerViewId, fragment, tag)
         fragmentTransaction.commit()
     }
 

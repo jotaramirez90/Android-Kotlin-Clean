@@ -30,10 +30,10 @@ ext {
 
     //Testing
     jUnitVersion = '4.12'
-    mockitoVersion = '1.9.5'
+    mockitoVersion = '2.8.9'
+    assertjVersion = '3.7.0'
     runnerVersion = '1.0.1'
-    espressoVersion = '2.2.2'
-    espressoContribVersion = '2.2'
+    espressoVersion = '3.0.1'
 
     appDependencies =
             [recyclerview    : "com.android.support:recyclerview-v7:${supportVersion}",
@@ -65,11 +65,12 @@ ext {
                         javaxAnnotations     : "javax.annotation:javax.annotation-api:${javaxAnnotationsVersion}",
                         androidAnnotations   : "com.android.support:support-annotations:${androidAnnotationsVersion}"]
 
-    testDependencies = [jUnit                 : "junit:junit:${jUnitVersion}",
-                        mockito               : "org.mockito:mockito-core:${mockitoVersion}",
-                        runner                : "com.android.support.test:runner:${runnerVersion}",
-                        espressoIdlingResource: "com.android.support.test.espresso:espresso-idling-resource:${espressoVersion}",
-                        espressoIntents       : "com.android.support.test.espresso:espresso-intents:${espressoVersion}",
-                        espressoCore          : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
-                        espressoContrib       : "com.android.support.test.espresso:espresso-contrib:${espressoContribVersion}"]
+    testDependencies = [jUnit          : "junit:junit:${jUnitVersion}",
+                        mockito        : "org.mockito:mockito-core:${mockitoVersion}",
+                        dexmaker       : "com.google.dexmaker:dexmaker:1.2",
+                        dexmakerMockito: "com.google.dexmaker:dexmaker-mockito:1.2",
+                        assertj        : "org.assertj:assertj-core:${assertjVersion}",
+                        runner         : "com.android.support.test:runner:${runnerVersion}",
+                        annotations    : "com.android.support:support-annotations:${supportVersion}",
+                        espresso       : "com.android.support.test.espresso:espresso-core:${espressoVersion}"]
 }

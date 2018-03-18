@@ -22,4 +22,9 @@ dependencies {
     provided domainDependencies.daggerCompiler
 
     provided domainDependencies.javaxAnnotations
+
+    def testDependencies = rootProject.ext.testDependencies
+    testCompile testDependencies.jUnit
+    testCompile testDependencies.mockito
+    testCompile testDependencies.assertj
 }

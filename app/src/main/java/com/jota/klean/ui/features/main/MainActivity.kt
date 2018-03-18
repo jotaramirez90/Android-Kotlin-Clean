@@ -23,11 +23,19 @@ class MainActivity : BaseActivity<MainActivity, MainPresenter, MainComponent>(),
         navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_rx -> {
-                    replaceFragment(R.id.fl_container, RxMainFragment.newInstance())
+                    replaceFragment(
+                            R.id.container,
+                            RxMainFragment.newInstance(),
+                            getString(R.string.bottom_title_rx)
+                    )
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.navigation_coroutines -> {
-                    replaceFragment(R.id.fl_container, CoroutinesMainFragment.newInstance())
+                    replaceFragment(
+                            R.id.container,
+                            CoroutinesMainFragment.newInstance(),
+                            getString(R.string.bottom_title_coroutines)
+                    )
                     return@setOnNavigationItemSelectedListener true
                 }
             }

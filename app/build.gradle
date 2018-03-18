@@ -41,9 +41,9 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
-        qa {
-            assets.srcDirs = ["src/main/assets"]
-        }
+        main.java.srcDirs += [file("$buildDir/generated/source/kapt/main")]
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
     }
 }
 
@@ -70,10 +70,14 @@ dependencies {
 
     compile appDependencies.dagger
     kapt appDependencies.daggerCompiler
-    kaptTest appDependencies.daggerCompiler
+    kaptAndroidTest appDependencies.daggerCompiler
 
     def testDependencies = rootProject.ext.testDependencies
-    testImplementation testDependencies.jUnit
-    androidTestImplementation testDependencies.runner
-    androidTestImplementation testDependencies.espressoCore
+    testCompile testDependencies.jUnit
+    testCompile testDependencies.mockito
+    androidTestCompile testDependencies.dexmaker
+    androidTestCompile testDependencies.dexmakerMockito
+    androidTestCompile testDependencies.annotations
+    androidTestCompile testDependencies.runner
+    androidTestCompile testDependencies.espresso
 }
