@@ -30,9 +30,10 @@ ext {
 
     //Testing
     jUnitVersion = '4.12'
-    mockitoVersion = '2.8.9'
+    mockitoVersion = '2.16.0'
     assertjVersion = '3.7.0'
     runnerVersion = '1.0.1'
+    robolectricVersion = '3.8'
     espressoVersion = '3.0.1'
 
     appDependencies =
@@ -67,10 +68,12 @@ ext {
 
     testDependencies = [jUnit          : "junit:junit:${jUnitVersion}",
                         mockito        : "org.mockito:mockito-core:${mockitoVersion}",
+                        mockitoInline  : "org.mockito:mockito-inline:${mockitoVersion}",
                         dexmaker       : "com.google.dexmaker:dexmaker:1.2",
                         dexmakerMockito: "com.google.dexmaker:dexmaker-mockito:1.2",
                         assertj        : "org.assertj:assertj-core:${assertjVersion}",
                         runner         : "com.android.support.test:runner:${runnerVersion}",
                         annotations    : "com.android.support:support-annotations:${supportVersion}",
+                        robolectric    : "org.robolectric:robolectric:${robolectricVersion}",
                         espresso       : "com.android.support.test.espresso:espresso-core:${espressoVersion}"]
 }

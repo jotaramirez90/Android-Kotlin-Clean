@@ -45,6 +45,10 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -62,4 +66,11 @@ dependencies {
 
     provided dataDependencies.javaxAnnotations
     compile dataDependencies.androidAnnotations
+
+    def testDependencies = rootProject.ext.testDependencies
+    testCompile testDependencies.jUnit
+    testCompile testDependencies.assertj
+    testCompile testDependencies.mockito
+    testCompile testDependencies.mockitoInline
+    testCompile testDependencies.robolectric
 }
