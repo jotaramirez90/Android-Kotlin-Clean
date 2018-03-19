@@ -1,14 +1,19 @@
 package com.jota.klean.ui.features.main
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import com.jota.klean.R
 import com.jota.klean.app.di.components.main.MainComponent
 import com.jota.klean.app.di.modules.main.MainModule
+import com.jota.klean.app.extensions.navigate
 import com.jota.klean.ui.common.BaseActivity
+import com.jota.klean.ui.features.details.DetailsActivity
 import com.jota.klean.ui.features.main.coroutines.CoroutinesMainFragment
 import com.jota.klean.ui.features.main.rx.RxMainFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.component_toolbar.*
+
 
 class MainActivity : BaseActivity<MainActivity, MainPresenter, MainComponent>(), MainView {
 
@@ -41,5 +46,18 @@ class MainActivity : BaseActivity<MainActivity, MainPresenter, MainComponent>(),
             }
             false
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.item_details -> {
+            navigate<DetailsActivity>(DetailsActivity.getBundle("Details Screen"))
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
     }
 }

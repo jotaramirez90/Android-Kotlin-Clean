@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.component_toolbar.*
 class DetailsActivity : BaseActivity<DetailsActivity, DetailsPresenter, DetailsComponent>(), DetailsView {
 
     companion object {
-        val PARAM_TITLE = "titleParam"
+        const val PARAM_TITLE = "titleParam"
 
         fun getBundle(title: String): Bundle {
             val bundle = Bundle()
